@@ -1,0 +1,2 @@
+This is a web app in progress based off of a code along by Tess Thorton (https://twitter.com/tessthornton) at Node School Toronto. I've taken the idea of using a node server to call a database that houses static currency exchange rates and changed it to use the api from api.fixer.io to provide up to date currency exchange rates. 
+I'm using this project to build a deeper understanding of Node.js.
