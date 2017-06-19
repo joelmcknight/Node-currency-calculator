@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+  <title>node tings</title>
+</head>
+<body>
+  <h1>Choose your target currency</h1>
+  <input type="text" id="currency" />
+  <button type="button" id="button">Submit</button>
+
+  <p id="output"></p>
+
+  <h1>Input your value for converting</h1>
+  <input type="text" id="convertCurrency" />
+  <button type="button" id="convertButton">Convert!</button>
+  <!--  make another input/button and make the ?value=SOMENUMBER -->
+
+  <p id="convertedOutput"></p>
+
+
+<script>
+  var input = document.getElementById('currency')
+  var button = document.getElementById('button')
+  var output = document.getElementById('output')
+
+  var convertInput = document.getElementById('convertCurrency')
+  var convertButton = document.getElementById('convertButton')
+  var convertedOutput = document.getElementById('convertedOutput')
+
+  button.addEventListener('click', function(){
+    // var url = '/currencies/CAD';
+    var inputCurrency = input.value.toUpperCase();
+    var url = `/currencies/${inputCurrency}`;
+
+    fetch(url).then(function(response) {
+      response.json().then(function(json) {
+        console.log(json);
+        output.innerHTML = `1 USD = ${json.value} ${json.currency}`
+      })
+    });
+
+  });
+
+  convertButton.addEventListener('click', function(){
+    // var url = '/currencies/CAD';
+    var inputCurrency = input.value.toUpperCase();
+    var url = `/currencies/${inputCurrency}`;
+
+    fetch(url).then(function(response) {
+      response.json().then(function(json) {
+        console.log(json);
+        var convertInt = convertInput.value;
+        console.log(convertInt);
+        convertedOutput.innerHTML = `${convertInt} USD = ${json.value * convertInt}  ${json.currency}`
+
+      })
+    });
+
+
+  });
+
+</script>
+  <form action=""></form>
+  <!-- <img src="https://s-media-cache-ak0.pinimg.com/736x/85/b4/cf/85b4cf112cf40c191ca5676b726fc410.jpg" alt="cat"> -->
+</body>
+</html>
